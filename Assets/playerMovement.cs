@@ -7,6 +7,8 @@ public class playerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movementInput;
     public TextMeshProUGUI textString;
+    public Character playerCharacter; // Referensi ke Character (Player)
+    private Character enemyTarget; // Referensi ke musuh yang bisa diserang
 
     private SpriteRenderer spriteRender;
 
@@ -14,6 +16,7 @@ public class playerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>(); // Ambil Rigidbody2D dari player
         spriteRender = rb.GetComponent<SpriteRenderer>();
+        
     }
 
     void Update()
@@ -28,6 +31,7 @@ public class playerMovement : MonoBehaviour
             spriteRender.flipX = true;
         }
         movementInput.y = Input.GetAxisRaw("Vertical");
+        inputHandling();
     }
 
     void FixedUpdate()
@@ -54,6 +58,20 @@ public class playerMovement : MonoBehaviour
          if(other.gameObject.CompareTag("b-kanan"))
         {
             textString.text = "Batas Kanan";
+        }
+    }
+    void inputHandling()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            enemyTarget.healthCharacter -= playerCharacter.attackPower; 
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Enemy"))
+        {
+                enemyTarget = collision.GetComponent<Character>();
         }
     }
 }

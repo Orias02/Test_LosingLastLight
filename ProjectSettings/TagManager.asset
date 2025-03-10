@@ -8,6 +8,7 @@ TagManager:
   - b-bawah
   - b-kiri
   - b-kanan
+  - Weapon
   layers:
   - Default
   - TransparentFX
