@@ -1279,6 +1279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   textString: {fileID: 2011893403}
+  playerCharacter: {fileID: 0}
 --- !u!1 &795367313
 GameObject:
   m_ObjectHideFlags: 0
